@@ -47,7 +47,7 @@ public class Interval<T extends Comparable<T>> {
      * @return true if this interval fully encloses the other interval, false otherwise.
      */
     public boolean encloses(Interval<T> other) {
-        return this.getStart().compareTo(other.getStart()) <= 0 && this.getEnd().compareTo(other.getEnd()) >= 0;
+        return false;
     }
 
     /**
@@ -55,13 +55,7 @@ public class Interval<T extends Comparable<T>> {
      * @return the intersection between this and the other interval.
      */
     public Optional<Interval<T>> intersection(Interval<T> other) {
-        T start = MAX.apply(getStart(), other.getStart());
-        T end = MIN.apply(getEnd(), other.getEnd());
-
-        if (start.compareTo(end) < 0) {
-            return Optional.of(Interval.of(start, end));
-        }
-        return Optional.empty();
+        return null;
     }
 
     public T getStart() {

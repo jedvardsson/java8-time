@@ -30,10 +30,6 @@ public class Calendar {
     }
 
     public List<Activity> getActivities(ZonedDateTime now, ZonedDateTime start, ZonedDateTime end) {
-        ArrayList<Activity> activities = new ArrayList<>();
-        for (ActivityTemplate activityTemplate : activityTemplates) {
-            activities.addAll(activityTemplate.getActivities(now, start, end));
-        }
-        return activities;
+        return null;
     }
 }

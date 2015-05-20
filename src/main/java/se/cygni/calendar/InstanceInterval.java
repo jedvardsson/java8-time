@@ -40,7 +40,7 @@ public class InstanceInterval {
      * @return true of this interval is fully contained by the other interval, false otherwise.
      */
     public boolean containedBy(InstanceInterval other) {
-        return !other.getStart().isAfter(this.getStart()) && !other.getEnd().isBefore(this.getEnd());
+        return other.encloses(this);
     }
 
     /**
@@ -48,7 +48,7 @@ public class InstanceInterval {
      * @return true if this interval fully encloses the other interval, false otherwise.
      */
     public boolean encloses(InstanceInterval other) {
-        return other.containedBy(this);
+        return false;
     }
 
     /**
@@ -56,13 +56,7 @@ public class InstanceInterval {
      * @return the intersection between this and the other interval.
      */
     public Optional<InstanceInterval> intersection(InstanceInterval other) {
-        Instant start = MAX_INSTANT.apply(getStart(), other.getStart());
-        Instant end = MIN_INSTANT.apply(getEnd(), other.getEnd());
-
-        if (start.isBefore(end)) {
-            return Optional.of(InstanceInterval.of(start, end));
-        }
-        return Optional.empty();
+        return null;
     }
 
     public Instant getStart() {

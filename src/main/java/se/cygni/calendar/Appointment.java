@@ -25,14 +25,7 @@ public class Appointment extends BasicActivityTemplate {
     }
 
     public List<Activity> getActivities(ZonedDateTime now, ZonedDateTime calStart, ZonedDateTime calEnd) {
-        if (!Interval.of(calStart, calEnd).overlaps(Interval.of(start, end))) {
-            return Arrays.asList();
-        }
-
-        ZonedDateTime activityStart = start.withZoneSameInstant(now.getZone());
-        ZonedDateTime activityEnd = end.withZoneSameInstant(now.getZone());
-        List<Activity> activities = Arrays.<Activity>asList(new BasicActivity(this, getTitle(), activityStart, activityEnd));
-        return activities;
+        return null;
     }
 
     @Override
