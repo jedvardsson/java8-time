@@ -35,6 +35,14 @@ public class Interval<T extends Comparable<T>> {
     }
 
     /**
+     * @param t an element
+     * @return true if this interval contains t.
+     */
+    public boolean contains(T t) {
+        return getStart().compareTo(t) <= 0 && t.compareTo(getEnd()) <= 0;
+    }
+
+    /**
      * @param other an interval
      * @return true of this interval is fully contained by the other interval, false otherwise.
      */

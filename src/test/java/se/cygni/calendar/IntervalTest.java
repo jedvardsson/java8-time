@@ -24,6 +24,14 @@ public class IntervalTest {
     }
 
     @Test
+    public void testContains() throws Exception {
+        assertTrue(Interval.of(5, 10).contains(6));
+        assertTrue(Interval.of(5, 10).contains(10));
+        assertFalse(Interval.of(5, 10).contains(11));
+        assertFalse(Interval.of(5, 10).contains(4));
+    }
+
+    @Test
     public void testEncloses() throws Exception {
         assertFalse(Interval.of(5, 10).encloses(Interval.of(1, 12)));
         assertTrue(Interval.of(1, 12).encloses(Interval.of(5, 10)));
