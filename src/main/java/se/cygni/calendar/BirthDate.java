@@ -1,7 +1,10 @@
 package se.cygni.calendar;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZonedDateTime;
+import java.time.chrono.ChronoZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BirthDate implements ActivityTemplate {
@@ -25,6 +28,16 @@ public class BirthDate implements ActivityTemplate {
     }
 
     public List<Activity> getActivities(ZonedDateTime now, ZonedDateTime start, ZonedDateTime end) {
-        return null;
+        ZonedDateTime zonedDateTime = localDate.atStartOfDay(now.getZone());
+        Interval<? super ChronoZonedDateTime<?>> interval = Interval.of(start, end);
+
+        List<Activity> activities = new ArrayList<>();
+
+        while (interval.contains(zonedDateTime)) {
+            String title = this.title + " " + Period.between(localDate, zonedDateTime.toLocalDate()).getYears() + " years";
+            activities.add(new BasicActivity(this, title, zonedDateTime, zonedDateTime.plusDays(1)));
+            zonedDateTime.plusYears(1);
+        }
+        return activities;
     }
 }
